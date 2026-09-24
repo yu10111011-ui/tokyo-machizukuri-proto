@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>東京まちづくり — Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Title -->
+    <section id="screen-title" class="screen active" aria-label="タイトル">
+      <div class="title-bg" aria-hidden="true">
+        <div class="skyline"></div>
+        <div class="neon-glow"></div>
+      </div>
+      <div class="title-card">
+        <p class="eyebrow">Indie Town-Builder VN Proto</p>
+        <h1>東京まちづくり</h1>
+        <p class="subtitle">〜 大手デベに潰される前に、自分の東京を押し通せ 〜</p>
+        <p class="pitch">
+          信用・バズ・資金を積み上げてコンペとクラファンを勝ち抜け。<br />
+          失敗すると次の入札資格も飛ぶ。
+        </p>
+        <button type="button" id="btn-start" class="btn primary">はじめる</button>
+        <p class="hint">クリック／タップで進む · 選択肢でステータスが変わる</p>
+      </div>
+    </section>
+
+    <!-- Play -->
+    <section id="screen-play" class="screen" aria-label="プレイ" hidden>
+      <header class="hud" id="hud">
+        <div class="stat" data-stat="money" title="資金">
+          <span class="stat-label">資金</span>
+          <span class="stat-value" id="stat-money">50</span>
+        </div>
+        <div class="stat" data-stat="trust" title="信用">
+          <span class="stat-label">信用</span>
+          <span class="stat-value" id="stat-trust">50</span>
+        </div>
+        <div class="stat" data-stat="buzz" title="バズ">
+          <span class="stat-label">バズ</span>
+          <span class="stat-value" id="stat-buzz">20</span>
+        </div>
+      </header>
+
+      <div class="scene-panel" id="scene-panel" data-scene="office">
+        <div class="scene-label" id="scene-label">朝・事務所</div>
+        <div class="scene-art" id="scene-art" aria-hidden="true"></div>
+      </div>
+
+      <div class="dialogue-box" id="dialogue-box" role="button" tabindex="0" aria-label="クリックで進む">
+        <div class="speaker" id="speaker">？？？</div>
+        <p class="text" id="dialogue-text"></p>
+        <span class="continue-hint" id="continue-hint">▼</span>
+      </div>
+
+      <div class="choices" id="choices" hidden></div>
+    </section>
+
+    <!-- Ending -->
+    <section id="screen-ending" class="screen" aria-label="エンディング" hidden>
+      <div class="ending-card" id="ending-card">
+        <p class="ending-tag" id="ending-tag">ENDING</p>
+        <h2 id="ending-title">タイトル</h2>
+        <p class="ending-body" id="ending-body"></p>
+        <div class="ending-stats" id="ending-stats"></div>
+        <button type="button" id="btn-restart" class="btn primary">もう一度</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="fx-toast" class="toast" hidden aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
