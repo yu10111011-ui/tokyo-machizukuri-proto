@@ -1,1 +1,20 @@
-PLACEHOLDER
+/* 東京まちづくり — night Tokyo neon aesthetic */
+:root {
+  --bg: #0a0e1a;
+  --bg-card: #12182a;
+  --panel: #1a2238;
+  --text: #e8eef8;
+  --muted: #8b9bb8;
+  --neon-pink: #ff2d95;
+  --neon-cyan: #2de2ff;
+  --neon-amber: #ffc14d;
+  --neon-lime: #7dff9a;
+  --danger: #ff5c7a;
+  --ok: #5ce1a8;
+  --border: rgba(45, 226, 255, 0.25);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  --radius: 14px;
+  --max: 440px;
+  --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+    "Segoe UI", sans-serif;
+}
