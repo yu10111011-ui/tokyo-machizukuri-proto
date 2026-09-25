@@ -4,71 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0a0e1a" />
-  <title>東京まちづくり — Proto</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <title>東京まちづくり — 一夜の判断</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div id="app">
-    <!-- —— Title —— -->
-    <section id="screen-title" class="screen active">
+    <section id="screen-title" class="screen active" aria-label="タイトル">
       <div class="title-bg" aria-hidden="true"></div>
       <div class="skyline" aria-hidden="true"></div>
       <div class="neon-glow" aria-hidden="true"></div>
       <div class="title-card">
-        <p class="eyebrow">ビジュアルノベル × VV</p>
+        <p class="eyebrow">TOKYO NIGHT PROTO</p>
         <h1>東京まちづくり</h1>
-        <p class="subtitle">日常業務の駆け引き法分来な安全業務家</p>
-        <p class="pitch">信頼をてげない。エアコンは熱く、コンペとキャンペーンは熱い。\nそして、東京の入口で君は選ぶ。いま、その選択が未来を決める。</p>
-        <button type="button" id="btn-start" class="btn primary">はじめる</button>
-        <p class="hint">クリックで進む。エアコンで選択できる。キーボードでも進める。</p>
+        <p class="subtitle">一夜の判断 — 信頼とバズのバランスゲーム</p>
+        <p class="pitch">あなたは若手プランナー。<br />朝までに、まちの未来を決める。</p>
+        <button type="button" class="btn primary" id="btn-start">はじめる</button>
+        <p class="hint">タップで進行 · 選択でステータス変化</p>
       </div>
     </section>
 
-    <!-- —— Game —— -->
-    <section id="screen-play" class="screen" hidden>
-      <div class="hud" aria-label="ステータス">
-        <div class="stat" data-stat="money">
-          <span class="stat-label">資金</span>
-          <span class="stat-value" id="stat-money">50</span>
-        </div>
-        <div class="stat" data-stat="trust">
-          <span class="stat-label">信頼</span>
-          <span class="stat-value" id="stat-trust">50</span>
-        </div>
-        <div class="stat" data-stat="buzz">
-          <span class="stat-label">バズ</span>
-          <span class="stat-value" id="stat-buzz">20</span>
-        </div>
+    <section id="screen-game" class="screen" hidden aria-label="プレイ">
+      <div class="hud" role="status" aria-live="polite">
+        <div class="stat" data-stat="money"><span class="stat-label">予算</span><span class="stat-value" id="stat-money">0</span></div>
+        <div class="stat" data-stat="trust"><span class="stat-label">信頼</span><span class="stat-value" id="stat-trust">0</span></div>
+        <div class="stat" data-stat="buzz"><span class="stat-label">バズ</span><span class="stat-value" id="stat-buzz">0</span></div>
       </div>
-
-      <div class="scene-panel">
+      <div class="scene-panel" id="scene-panel" data-scene="office">
+        <span class="scene-label" id="scene-label">オフィス</span>
         <div class="scene-art" aria-hidden="true"></div>
-        <span class="scene-label" id="scene-label"></span>
       </div>
-
-      <div class="dialogue-box" id="dialogue-box" role="button" tabindex="0" aria-label="クリックで進むダイアログ">
-        <div class="speaker" id="speaker"></div>
-        <p class="text" id="dialogue-text"></p>
-        <span class="continue-hint" id="continue-hint">▼ 続きを読む</span>
+      <div class="dialogue-box" id="dialogue" tabindex="0" role="button" aria-label="会話を進める">
+        <span class="speaker" id="speaker"></span>
+        <p class="text" id="text"></p>
+        <span class="continue-hint" id="continue-hint" hidden>▼</span>
       </div>
-
       <div class="choices" id="choices" hidden></div>
     </section>
 
-    <!-- —— Ending —— -->
-    <section id="screen-ending" class="screen" hidden>
+    <section id="screen-ending" class="screen" hidden aria-label="エンディング">
       <div class="ending-card" id="ending-card">
-        <div class="ending-art" aria-hidden="true"></div>
-        <p class="ending-tag" id="ending-tag"></p>
+        <div class="ending-art" id="ending-art" aria-hidden="true"></div>
+        <p class="ending-tag" id="ending-tag">ENDING</p>
         <h2 id="ending-title"></h2>
         <p class="ending-body" id="ending-body"></p>
         <div class="ending-stats" id="ending-stats"></div>
-        <button type="button" id="btn-restart" class="btn primary">タイトルへ</button>
+        <button type="button" class="btn primary" id="btn-retry">もう一度</button>
       </div>
     </section>
-
-    <div class="toast" id="fx-toast" hidden></div>
   </div>
-  <script src="./app.js"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
 </body>
 </html>
